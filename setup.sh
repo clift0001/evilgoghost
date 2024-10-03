@@ -34,9 +34,9 @@ if [[ $# -ne 5 ]]; then
     print_error " - subdomains                      - a space separated list of subdomains to proxy to evilginx3, can be one if only one"
     print_error " - root domain bool                - true or false to proxy root domain to evilginx3"
     print_error " - feed bool                       - true or false if you plan to use the live feed"
-    print_error " - rid replacement                 - replace the gophish default \"rid\" in phishing URLs with this value"
+    print_error " - rid replacement                 - replace the gophish default \"rid\" in phishing URLs with this value. Consider not using rid or user_id"
     print_error "Example:"
-    print_error '  ./setup.sh example.com "accounts myaccount" false true user_id'
+    print_error '  ./setup.sh example.com "accounts myaccount" false true custom_user_id'
 
     exit 2
 fi
@@ -98,6 +98,7 @@ function setup_gophish () {
     fi
     # Replace rid with user input
     find . -type f -exec sed -i "s|client_id|${rid_replacement}|g" {} \;
+    sed -i "s|\"rid\"|\"${rid_replacement}\"|g" evilginx3/core/http_proxy.go
     cd gophish || exit 1
     go build
     cd ..

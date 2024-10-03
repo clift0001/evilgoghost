@@ -16,9 +16,9 @@ if [[ $# -ne 2 ]]; then
     print_error "Usage:"
     print_error "./replace_rid <previous rid> <new rid>"
     print_error " - previous rid      - the previous rid value that was replaced"
-    print_error " - new rid           - the new rid value to replace the previous"
+    print_error " - new rid           - the new rid value to replace the previous. Consider not using rid or user_id"
     print_error "Example:"
-    print_error "   ./replace_rid.sh user_id client_id"
+    print_error "   ./replace_rid.sh custom_user_id new_custom_user_id"
 
     exit 2
 fi
