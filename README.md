@@ -85,9 +85,9 @@ Usage:
  - subdomains                      - a space separated list of evilginx3 subdomains, can be one if only one
  - root domain bool                - true or false to proxy root domain to evilginx3
  - feed bool                       - true or false if you plan to use the live feed
- - rid replacement                 - replace the gophish default "rid" in phishing URLs with this value
+ - rid replacement                 - replace the gophish default "rid" in phishing URLs with this value. Consider not using rid or user_id
 Example:
-  ./setup.sh example.com "accounts myaccount" false true user_id
+  ./setup.sh example.com "accounts myaccount" false true custom_user_id
 ```
 
 ## Cloudflare Turnstile Setup
@@ -124,9 +124,9 @@ In case you ran `setup.sh` once and already replaced the default `RId` value thr
 Usage:
 ./replace_rid <previous rid> <new rid>
  - previous rid      - the previous rid value that was replaced
- - new rid           - the new rid value to replace the previous
+ - new rid           - the new rid value to replace the previous. Consider not using rid or user_id
 Example:
-  ./replace_rid.sh user_id client_id
+  ./replace_rid.sh custom_user_id new_custom_user_id
 ```
 
 ## Email Campaign Setup
